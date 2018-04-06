@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from models import Url
 
+
 class Scraper(object):
     """
     Extracts elements of an iTunes Podcast directory page.
@@ -10,7 +11,7 @@ class Scraper(object):
     """
 
     def __init__(self, text):
-        self.soup = BeautifulSoup(text)
+        self.soup = BeautifulSoup(text, 'lxml')
 
     def get_itunes_podcast_urls(self):
         """Return a list of all podcast urls on this page."""
@@ -204,6 +205,7 @@ class Scraper(object):
             if selected_tag:
                 selected = Url(selected_tag.get('href'), selected_tag.string)
         return selected
+
 
 def make_soup_from_file(filename):
     """Return BeautifulSoup of the text in filename"""
