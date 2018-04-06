@@ -2,6 +2,7 @@ import requests
 from podscrape.scraper import Scraper
 from podscrape import lookup
 
+
 class Fetcher(object):
     """
     Handles http requests for outside data
@@ -39,5 +40,7 @@ class Fetcher(object):
         """
         podcasts = []
         for url in url_list:
-            podcasts.append(self.lookup(url))
+            podcast = self.lookup(url)
+            if podcast is not None:
+                podcasts.append(podcast)
         return podcasts

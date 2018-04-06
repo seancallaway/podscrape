@@ -6,6 +6,7 @@ import json
 import re
 from podscrape.models import Podcast
 
+
 def unwrap_json(json_text):
     """
     Extract first result from Lookup json response
@@ -26,14 +27,19 @@ def unwrap_json(json_text):
         single_json = json.dumps(single_result)
     return single_json
 
+
 def podcast_from_json(json_text):
     """Return Podcast with info from json_text"""
-    text = unwrap_json(json_text)
-    json_dict = json.loads(text)
-    itunes_id = json_dict[u'collectionId']
-    name = json_dict[u'collectionName']
-    feed_url = json_dict[u'feedUrl']
+    try:
+        text = unwrap_json(json_text)
+        json_dict = json.loads(text)
+        itunes_id = json_dict[u'collectionId']
+        name = json_dict[u'collectionName']
+        feed_url = json_dict[u'feedUrl']
+    except KeyError:
+        return None
     return Podcast(itunes_id, name, feed_url)
+
 
 def itunes_id_from_url(url):
     """Return id number from itunes podcast url"""
