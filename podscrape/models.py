@@ -10,6 +10,7 @@ class Url(object):
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
 
+
 class Podcast(object):
     """
     Holds the useful components of a Podcast entry

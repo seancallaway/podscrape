@@ -1,6 +1,7 @@
 import codecs
 from podscrape.models import Url, Podcast
 
+
 class FileOutput(object):
     """
     Writes info passed in to file. Handles two different data streams.
@@ -63,6 +64,7 @@ class FileOutput(object):
             f.write(line)
 
         f.close()
+
 
 class NullOutput(object):
     """

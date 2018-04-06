@@ -1,6 +1,7 @@
 from models import Url
 import re
 
+
 class Driver(object):
     """
     Handles the traversal strategy of scraping the Podcast directory.
@@ -33,7 +34,7 @@ class Driver(object):
         self.letters = scraper.get_letter_urls()
         self.pages = scraper.get_page_urls()
 
-        #Collect each of the current selected Tags
+        # Collect each of the current selected Tags
         self.current_subgenre = scraper.get_currently_selected_subgenre()
         self.current_genre = scraper.get_currently_selected_genre()
         self.current_letter = scraper.get_currently_selected_letter()
